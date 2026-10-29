@@ -1,2 +1,8 @@
 /OtobusRezervasyon/nbproject/private/
 /OtobusRezervasyon/build/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/

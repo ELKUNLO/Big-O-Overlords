@@ -1,11 +1,27 @@
 package otobusrezervasyon;
 
-
 public class Bilet {
 
-    int biletNo;
-    int koltukNo;
-    
-    /*görevli kişi burdan devam eder. bunu tanımladım çünkü (Bilet[] koltuklar;)
-      dizisini yapmam gerekiyordu*/
+	private String biletNo;
+	private int koltukNo;
+	private Yolcu yolcu;
+
+	public Bilet(String biletNo, int koltukNo, Yolcu yolcu) {	//YAPILANDIRICI METODUMUZ.
+		this.biletNo = biletNo;
+		this.koltukNo = koltukNo;
+		this.yolcu = yolcu;
+	}
+
+	public String getBiletNo() {
+		return biletNo;
+	}
+
+	public int getKoltukNo() {
+		return koltukNo;
+	}
+
+	public Yolcu getYolcu() {
+		return yolcu;
+	}
+
 }
