@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package otobusrezervasyon;
 
-/**
- *
- * @author Omar
- */
 public class OtobusRezervasyon {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        SeferListesi Liste = new SeferListesi();
+        
+        Liste.seferleriGoruntule();
+        
+        Sefer sefer_1 = new Sefer(421, "Malatya", "Istanbul", "12/3/2027", "14:00", 2000);
+        Sefer sefer_2 = new Sefer(421, "Malatya", "Bursa", "23/6/2027", "18:30", 2200);
+        
+        Liste.seferEkle(sefer_1);
+        Liste.seferEkle(sefer_2);
+        
+        Liste.seferleriGoruntule();
     }
     
 }
