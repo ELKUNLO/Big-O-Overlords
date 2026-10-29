@@ -2,11 +2,21 @@ package otobusrezervasyon;
 
 public class BiletYoneticisi {
 
-	private Bilet[] koltuklar = new Bilet[30]; // 30 KİŞİLİK SABİT KOLTUK DİZİSİ (BİLET DİZİSİNİ TUTUYOR)
+	// KOLTUK DİZİSİ ARTIK HER SEFERİN İÇİNDE (Sefer.koltuklar). METOTLAR HANGİ SEFER ÜZERİNDE ÇALIŞACAKLARINI PARAMETRE OLARAK ALIYOR.
 
-	public boolean biletKes(int koltukNo, Bilet bilet) { // BOŞ KOLTUĞA BİLET KESME / KAYDETME METODU
-		if (koltukNo < 0 || koltukNo >= 30) { // 29 DAN BÜYÜK VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF CASE
-			System.out.println("Geçersiz koltuk numarası! (0-29 arasında olmalıdır)");
+	public boolean biletKes(Sefer sefer, Bilet bilet) { // SEÇİLEN SEFERDEKİ BOŞ KOLTUĞA BİLET KESME / KAYDETME METODU
+		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF CASE
+			System.out.println("Hata: Sefer bulunamadı!");
+			return false;
+		}
+		if (bilet == null) { // BOŞ (NULL) BİLETİN KOLTUĞA YAZILIP BAŞARILI SAYILMASINI ENGELLEYEN İF CASE
+			System.out.println("Hata: Bilet bilgisi boş!");
+			return false;
+		}
+		int koltukNo = bilet.getKoltukNo(); // KOLTUK NUMARASI BİLETİN İÇİNDEN ALINIR, BÖYLECE BİLET VE DİZİ İNDEKSİ HEP AYNI KALIR
+		Bilet[] koltuklar = sefer.koltuklar;
+		if (koltukNo < 0 || koltukNo >= koltuklar.length) { // 29 DAN BÜYÜK VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF CASE
+			System.out.println("Geçersiz koltuk numarası! (0-" + (koltuklar.length - 1) + " arasında olmalıdır)");
 			return false;
 		}
 		if (koltuklar[koltukNo] != null) { // KOLTUĞUN DOLU OLUP OLMADIĞINI KONTROL EDEN İF CASE
@@ -14,13 +24,19 @@ public class BiletYoneticisi {
 			return false;
 		}
 		koltuklar[koltukNo] = bilet; // MÜSAİT OLAN KOLTUĞA BİLETİN KESİLME İŞLEMİ
-		System.out.println(koltukNo + " numaralı koltuğa bilet başarıyla kesildi.");
+		System.out.println(sefer.seferNo + " numaralı seferde " + koltukNo + " numaralı koltuğa bilet başarıyla kesildi. (Bilet No: "
+				+ bilet.getBiletNo() + ")");
 		return true;
 	}
 
-	public boolean biletIptal(int koltukNo) { // BİLET İPTAL EDİLDİĞİNDE KOLTUĞU BOŞALTAN METOD
-		if (koltukNo < 0 || koltukNo >= 30) { // 29 DAN BÜYÜK VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF CASE
-			System.out.println("Geçersiz koltuk numarası! (0-29 arasında olmalıdır)");
+	public boolean biletIptal(Sefer sefer, int koltukNo) { // BİLET İPTAL EDİLDİĞİNDE SEÇİLEN SEFERDEKİ KOLTUĞU BOŞALTAN METOD
+		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF CASE
+			System.out.println("Hata: Sefer bulunamadı!");
+			return false;
+		}
+		Bilet[] koltuklar = sefer.koltuklar;
+		if (koltukNo < 0 || koltukNo >= koltuklar.length) { // 29 DAN BÜYÜK VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF CASE
+			System.out.println("Geçersiz koltuk numarası! (0-" + (koltuklar.length - 1) + " arasında olmalıdır)");
 			return false;
 		}
 		if (koltuklar[koltukNo] == null) { // KOLTUĞUN BOŞ OLUP OLMADIĞINI KONTROL EDEN İF CASE
@@ -28,12 +44,18 @@ public class BiletYoneticisi {
 			return false;
 		}
 		koltuklar[koltukNo] = null; // KOLTUĞU BOŞALT
-		System.out.println(koltukNo + " numaralı koltuk iptal edildi ve boşaltıldı.");
+		System.out.println(sefer.seferNo + " numaralı seferde " + koltukNo + " numaralı koltuk iptal edildi ve boşaltıldı.");
 		return true;
 	}
 
-	public void koltuklariGoster() { // BOŞ KOLTUKLARI GÖSTEREN METODUMUZ
-		System.out.println("--- Otobüs Koltuk ve Bilet Durumları ---");
+	public void koltuklariGoster(Sefer sefer) { // SEÇİLEN SEFERİN BOŞ/DOLU KOLTUKLARINI GÖSTEREN METODUMUZ
+		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF CASE
+			System.out.println("Hata: Sefer bulunamadı!");
+			return;
+		}
+		Bilet[] koltuklar = sefer.koltuklar;
+		System.out.println("--- " + sefer.seferNo + " Numaralı Sefer (" + sefer.kalkis + " -> " + sefer.varis
+				+ ") Koltuk ve Bilet Durumları ---");
 		for (int i = 0; i < koltuklar.length; i++) { // KOLTUKLAR İSİMLİ DİZİYİ BAŞTAN SONA GEZİYOR BOŞ OLUP OLMADIĞINI
 														// KONTROL EDİYOR
 			if (koltuklar[i] == null) {
@@ -45,15 +67,52 @@ public class BiletYoneticisi {
 		}
 	}
 
-	// TEST 
+	public int doluKoltukSayisi(Sefer sefer) { // SEFERDE SATILMIŞ BİLET SAYISINI DÖNDÜRÜR (AKTİF BİLETİ OLAN SEFER SİLİNMESİN DİYE seferSil İÇİN)
+		if (sefer == null) {
+			return 0;
+		}
+		int sayi = 0;
+		for (int i = 0; i < sefer.koltuklar.length; i++) { // DİZİYİ GEZİP NULL OLMAYAN (DOLU) KOLTUKLARI SAYIYOR
+			if (sefer.koltuklar[i] != null) {
+				sayi++;
+			}
+		}
+		return sayi;
+	}
+
+	// TEST
 	public static void main(String[] args) {
+		SeferListesi liste = new SeferListesi();
+		liste.seferEkle(new Sefer(421, "Malatya", "Istanbul", "12/3/2027", "14:00", 2000));
+		liste.seferEkle(new Sefer(422, "Malatya", "Bursa", "23/6/2027", "18:30", 2200));
+
 		BiletYoneticisi yonetici = new BiletYoneticisi();
 
 		Yolcu yolcu1 = new Yolcu("11122233344", "Ahmet", "Yılmaz", "5551234567");
-		Bilet bilet1 = new Bilet("B01", 5, yolcu1);
+		Yolcu yolcu2 = new Yolcu("55566677788", "Ayşe", "Demir", "5559876543");
 
-		yonetici.biletKes(5, bilet1);
-		yonetici.koltuklariGoster();
+		Sefer istanbul = liste.seferBul(421);
+		Sefer bursa = liste.seferBul(422);
+
+		yonetici.biletKes(istanbul, new Bilet(5, yolcu1)); // BİLET NO OTOMATİK: B1
+		yonetici.biletKes(bursa, new Bilet(5, yolcu2)); // AYNI KOLTUK NO FARKLI SEFERDE BOŞ OLMALI, BİLET NO: B2
+		yonetici.biletKes(istanbul, new Bilet(5, yolcu2)); // DOLU KOLTUK HATASI BEKLENİYOR
+		yonetici.biletKes(istanbul, new Bilet(30, yolcu2)); // GEÇERSİZ KOLTUK HATASI BEKLENİYOR
+		yonetici.biletKes(liste.seferBul(999), new Bilet(1, yolcu2)); // OLMAYAN SEFER HATASI BEKLENİYOR
+		yonetici.biletKes(istanbul, null); // BOŞ BİLET HATASI BEKLENİYOR
+
+		Bilet dosyadanGelen = new Bilet("B20", 7, yolcu2); // DOSYADAN YÜKLENMİŞ GİBİ, SONRAKİ YENİ BİLET B21 OLMALI
+		yonetici.biletKes(bursa, dosyadanGelen);
+		yonetici.biletKes(bursa, new Bilet(8, yolcu1));
+
+		yonetici.koltuklariGoster(istanbul);
+		yonetici.koltuklariGoster(bursa);
+		System.out.println("421 dolu koltuk sayısı: " + yonetici.doluKoltukSayisi(istanbul)); // 1 BEKLENİYOR
+		System.out.println("422 dolu koltuk sayısı: " + yonetici.doluKoltukSayisi(bursa)); // 3 BEKLENİYOR
+
+		yonetici.biletIptal(istanbul, 5);
+		yonetici.biletIptal(istanbul, 5); // ZATEN BOŞ HATASI BEKLENİYOR
+		System.out.println("421 dolu koltuk sayısı: " + yonetici.doluKoltukSayisi(istanbul)); // 0 BEKLENİYOR
 	}
 
 }
