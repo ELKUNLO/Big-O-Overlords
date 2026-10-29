@@ -40,4 +40,15 @@ public class SeferListesi {
         }
         System.out.println(" --------------------------\n");
     }
+
+    public Sefer seferBul(int seferNo) {   //sefer numarasina gore listeyi bastan sona gezer, bulamazsa null doner
+        Sefer temp = head;
+        while (temp != null) {
+            if (temp.seferNo == seferNo) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
 }
