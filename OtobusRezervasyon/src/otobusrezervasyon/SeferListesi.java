@@ -32,10 +32,10 @@ public class SeferListesi {
         System.out.println("\n --- MEVCUT SEFERLER ---");
         while (temp != null) {
             System.out.println("Sefer No : " + temp.seferNo
-                            + " |Guzergah : " + temp.kalkis + " -> " + temp.varis
-                            + " |Tarih : " + temp.tarih
-                            + " |Saat : " + temp.saat
-                            + " |Fiyat : " + temp.fiyat + " TL");
+                    + " |Guzergah : " + temp.kalkis + " -> " + temp.varis
+                    + " |Tarih : " + temp.tarih
+                    + " |Saat : " + temp.saat
+                    + " |Fiyat : " + temp.fiyat + " TL");
             temp = temp.next;
         }
         System.out.println(" --------------------------\n");
@@ -50,5 +50,43 @@ public class SeferListesi {
             temp = temp.next;
         }
         return null;
+    }
+
+    public boolean seferSil(int seferNo) {
+        if (head == null) {
+            System.out.println("Hata... : sefer listesi bos, silinecek sefer yok");
+            return false;
+        }
+
+        BiletYoneticisi by = new BiletYoneticisi();
+
+        if (head.seferNo == seferNo) {
+            if (by.doluKoltukSayisi(head) > 0) {
+                System.out.println("Hata: " + seferNo + " numarali seferde satilmis biletler var, silinmez");
+                return false;
+            }
+            head = head.next;
+            System.out.println(seferNo + " numarali sefer basariyla silindi");
+            return true;
+        }
+
+        Sefer temp = head;
+        while (temp.next != null && temp.next.seferNo != seferNo) {
+            temp = temp.next;
+        }
+        
+        if(temp.next == null){
+            System.out.println("Hata : " + seferNo + " numarali sefer bulunmadi");
+            return false;
+        }
+        
+        if(by.doluKoltukSayisi(temp.next) > 0){
+            System.out.println("Hata: " + seferNo + "numarali seferde satilmis biletler var, silinmez!");
+            return false;
+        }
+        
+        temp.next = temp.next.next;
+        System.out.println(seferNo + " numarali sefer basariyla silindi");
+        return true;
     }
 }

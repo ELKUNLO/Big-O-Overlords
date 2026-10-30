@@ -14,6 +14,15 @@ public class OtobusRezervasyon {
         Liste.seferEkle(sefer_1);
         Liste.seferEkle(sefer_2);
         
+        System.out.println("-----SILMEDEN ONCE------");
+        Liste.seferleriGoruntule();
+        
+        System.out.println("-----SILME TESTI------");
+        Liste.seferSil(421);
+        
+        Liste.seferSil(99);
+        
+        System.out.println("-----SILDIKTEN SONRA------");
         Liste.seferleriGoruntule();
     }
     
