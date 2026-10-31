@@ -2,7 +2,7 @@ package otobusrezervasyon;
 
 public class Bilet {
 
-	private static int sayac = 0; // KESİLEN EN BÜYÜK BİLET NUMARASI. TÜM BİLETLER İÇİN ORTAK (STATİC) OLDUĞU İÇİN AYNI NUMARA İKİ KEZ VERİLMEZ.
+	private static int sayac = 0; // OLUŞTURULAN EN BÜYÜK BİLET NUMARASI. TÜM BİLETLER İÇİN ORTAK (STATİC) OLDUĞU İÇİN AYNI NUMARA İKİ KEZ VERİLMEZ.
 
 	private String biletNo;
 	private int koltukNo;
