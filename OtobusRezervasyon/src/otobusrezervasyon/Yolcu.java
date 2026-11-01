@@ -7,7 +7,7 @@ public class Yolcu {
 	private String soyad;//KİŞİSEL BİLGİLER PRİVATE SAKLANIR
 	private String telefon;//KİŞİSEL BİLGİLER PRİVATE SAKLANIR
 
-	public Yolcu(String tcNo, String ad, String soyad, String telefon) { 	//YAPILANDIRICI METODUMUZ.
+	public Yolcu(String tcNo, String ad, String soyad, String telefon) { 	//YAPICI (CONSTRUCTOR).
 		this.tcNo = tcNo;
 		this.ad = ad;
 		this.soyad = soyad;
@@ -42,7 +42,12 @@ public class Yolcu {
 		return tcNo;
 	}
 
-	public String toString() {		//NESNELERİ STRİNGE DÖNÜŞTÜRÜR VERİLERİ TXT DOSYASINDA SAKLAMAYI KOLAYLAŞTIRMAYI HEDEFLİYORUM
-		return "Yolcu [tcNo=" + tcNo + ", ad=" + ad + ", soyad=" + soyad + ", telefon=" + telefon + "]";
+	@Override
+	public String toString() { // EKRANDA GÖSTERMEK İÇİN OKUNAKLI METİN
+		return ad + " " + soyad + " (TC: " + tcNo + ", Tel: " + telefon + ")";
+	}
+
+	public String dosyaSatiri() { // YOLCU BİLGİLERİNİ DOSYAYA YAZMAK İÇİN ALANLARI ';' İLE AYIRIR: tcNo;ad;soyad;telefon
+		return tcNo + ";" + ad + ";" + soyad + ";" + telefon;
 	}
 }

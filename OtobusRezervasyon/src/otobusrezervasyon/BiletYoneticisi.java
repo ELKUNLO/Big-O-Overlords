@@ -2,24 +2,24 @@ package otobusrezervasyon;
 
 public class BiletYoneticisi {
 
-	// KOLTUK DİZİSİ ARTIK HER SEFERİN İÇİNDE (Sefer.koltuklar). METOTLAR HANGİ SEFER ÜZERİNDE ÇALIŞACAKLARINI PARAMETRE OLARAK ALIYOR.
+	// KOLTUK DİZİSİ HER SEFERİN İÇİNDE (Sefer.koltuklar). METOTLAR HANGİ SEFER ÜZERİNDE ÇALIŞACAKLARINI PARAMETRE OLARAK ALIYOR.
 
 	public boolean biletKes(Sefer sefer, Bilet bilet) { // SEÇİLEN SEFERDEKİ BOŞ KOLTUĞA BİLET KESME / KAYDETME METODU
-		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF CASE
+		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF BLOĞU
 			System.out.println("Hata: Sefer bulunamadı!");
 			return false;
 		}
-		if (bilet == null) { // BOŞ (NULL) BİLETİN KOLTUĞA YAZILIP BAŞARILI SAYILMASINI ENGELLEYEN İF CASE
+		if (bilet == null) { // BOŞ (NULL) BİLETİN KOLTUĞA YAZILIP BAŞARILI SAYILMASINI ENGELLEYEN İF BLOĞU
 			System.out.println("Hata: Bilet bilgisi boş!");
 			return false;
 		}
 		int koltukNo = bilet.getKoltukNo(); // KOLTUK NUMARASI BİLETİN İÇİNDEN ALINIR, BÖYLECE BİLET VE DİZİ İNDEKSİ HEP AYNI KALIR
 		Bilet[] koltuklar = sefer.koltuklar;
-		if (koltukNo < 0 || koltukNo >= koltuklar.length) { // 29 DAN BÜYÜK VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF CASE
+		if (koltukNo < 0 || koltukNo >= koltuklar.length) { // DİZİ SINIRLARI DIŞINDAKİ VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF BLOĞU
 			System.out.println("Geçersiz koltuk numarası! (0-" + (koltuklar.length - 1) + " arasında olmalıdır)");
 			return false;
 		}
-		if (koltuklar[koltukNo] != null) { // KOLTUĞUN DOLU OLUP OLMADIĞINI KONTROL EDEN İF CASE
+		if (koltuklar[koltukNo] != null) { // KOLTUĞUN DOLU OLUP OLMADIĞINI KONTROL EDEN İF BLOĞU
 			System.out.println("Hata: Bu koltuk zaten dolu!");
 			return false;
 		}
@@ -30,16 +30,16 @@ public class BiletYoneticisi {
 	}
 
 	public boolean biletIptal(Sefer sefer, int koltukNo) { // BİLET İPTAL EDİLDİĞİNDE SEÇİLEN SEFERDEKİ KOLTUĞU BOŞALTAN METOD
-		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF CASE
+		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF BLOĞU
 			System.out.println("Hata: Sefer bulunamadı!");
 			return false;
 		}
 		Bilet[] koltuklar = sefer.koltuklar;
-		if (koltukNo < 0 || koltukNo >= koltuklar.length) { // 29 DAN BÜYÜK VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF CASE
+		if (koltukNo < 0 || koltukNo >= koltuklar.length) { // DİZİ SINIRLARI DIŞINDAKİ VEYA 0 DAN KÜÇÜK KOLTUK NUMARASINI DENETLEYEN İF BLOĞU
 			System.out.println("Geçersiz koltuk numarası! (0-" + (koltuklar.length - 1) + " arasında olmalıdır)");
 			return false;
 		}
-		if (koltuklar[koltukNo] == null) { // KOLTUĞUN BOŞ OLUP OLMADIĞINI KONTROL EDEN İF CASE
+		if (koltuklar[koltukNo] == null) { // KOLTUĞUN BOŞ OLUP OLMADIĞINI KONTROL EDEN İF BLOĞU
 			System.out.println("Hata: Bu koltuk zaten boş!");
 			return false;
 		}
@@ -49,7 +49,7 @@ public class BiletYoneticisi {
 	}
 
 	public void koltuklariGoster(Sefer sefer) { // SEÇİLEN SEFERİN BOŞ/DOLU KOLTUKLARINI GÖSTEREN METODUMUZ
-		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF CASE
+		if (sefer == null) { // SEFERİN BULUNUP BULUNMADIĞINI KONTROL EDEN İF BLOĞU
 			System.out.println("Hata: Sefer bulunamadı!");
 			return;
 		}
@@ -90,6 +90,7 @@ public class BiletYoneticisi {
 
 		Yolcu yolcu1 = new Yolcu("11122233344", "Ahmet", "Yılmaz", "5551234567");
 		Yolcu yolcu2 = new Yolcu("55566677788", "Ayşe", "Demir", "5559876543");
+		Yolcu yolcu3 = new Yolcu("66644499911", "Mehmet", "Kul", "5554592144");
 
 		Sefer istanbul = liste.seferBul(421);
 		Sefer bursa = liste.seferBul(422);
@@ -101,7 +102,7 @@ public class BiletYoneticisi {
 		yonetici.biletKes(liste.seferBul(999), new Bilet(1, yolcu2)); // OLMAYAN SEFER HATASI BEKLENİYOR
 		yonetici.biletKes(istanbul, null); // BOŞ BİLET HATASI BEKLENİYOR
 
-		Bilet dosyadanGelen = new Bilet("B20", 7, yolcu2); // DOSYADAN YÜKLENMİŞ GİBİ, SONRAKİ YENİ BİLET B21 OLMALI
+		Bilet dosyadanGelen = new Bilet("B20", 7, yolcu3); // DOSYADAN YÜKLENMİŞ GİBİ, SONRAKİ YENİ BİLET B21 OLMALI
 		yonetici.biletKes(bursa, dosyadanGelen);
 		yonetici.biletKes(bursa, new Bilet(8, yolcu1));
 
@@ -113,6 +114,10 @@ public class BiletYoneticisi {
 		yonetici.biletIptal(istanbul, 5);
 		yonetici.biletIptal(istanbul, 5); // ZATEN BOŞ HATASI BEKLENİYOR
 		System.out.println("421 dolu koltuk sayısı: " + yonetici.doluKoltukSayisi(istanbul)); // 0 BEKLENİYOR
+		
+		System.out.println("Bilet sahibi: " + yolcu1);
+		System.out.println("Bilet sahibi: " + yolcu2);
+		System.out.println("Bilet sahibi: " + yolcu3);
 	}
 
 }
