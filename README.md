@@ -21,7 +21,7 @@ Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, konsol t
 | 1 | Omar (Takım Lideri) | [@ELKUNLO](https://github.com/ELKUNLO) | Sefer Yönetimi | Tek yönlü bağlı liste |
 | 2 | Arda | [@ardaxyz](https://github.com/ardaxyz) | Koltuk ve Yolcu/Bilet Yönetimi | Sabit boyutlu dizi |
 | 3 | *[Ad Soyad]* | *[@kullanici]* | Sıralama, Arama ve Dokümantasyon | Selection Sort, doğrusal arama |
-| 4 | *[Ad Soyad]* | *[@kullanici]* | Dosya İşlemleri ve Ana Menü | Dosya okuma/yazma |
+| 4 | HASAN ALHUSEN | @hasaneng2007 | Dosya İşlemleri ve Ana Menü | Dosya okuma/yazma |
 
 ### 1. Öğrenci (Takım Lideri) — Sefer Yönetimi
 - [x] `Sefer` sınıfı (Sefer No, Kalkış, Varış, Tarih, Saat, Bilet Fiyatı)
