@@ -2,7 +2,7 @@
 
 ## Proje Tanımı
 
-Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, konsol tabanlı bir Java uygulamasıdır. Kullanıcı seferleri listeleyebilir, yeni sefer ekleyip silebilir, seçtiği seferde boş bir koltuğa bilet alabilir veya biletini iptal edebilir. Seferler fiyata ya da kalkış saatine göre sıralanabilir, bilet numarası veya yolcu adına göre arama yapılabilir. Tüm veriler program kapanırken bir metin dosyasına kaydedilir ve program açılırken geri yüklenir.
+Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, şimdilik konsol tabanlı bir Java uygulamasıdır. Kullanıcı seferleri listeleyebilir, yeni sefer ekleyip silebilir, seçtiği seferde boş bir koltuğa bilet alabilir veya biletini iptal edebilir. Seferler fiyata ya da kalkış saatine göre sıralanabilir, bilet numarası veya yolcu adına göre arama yapılabilir. Tüm veriler program kapanırken bir metin dosyasına kaydedilir ve program açılırken geri yüklenir.
 
 ## Kullanılan Teknolojiler
 
@@ -20,8 +20,8 @@ Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, konsol t
 |---|---|---|---|---|
 | 1 | Omar (Takım Lideri) | [@ELKUNLO](https://github.com/ELKUNLO) | Sefer Yönetimi | Tek yönlü bağlı liste |
 | 2 | Arda | [@ardaxyz](https://github.com/ardaxyz) | Koltuk ve Yolcu/Bilet Yönetimi | Sabit boyutlu dizi |
-| 3 | *[Ad Soyad]* | *[@kullanici]* | Sıralama, Arama ve Dokümantasyon | Selection Sort, doğrusal arama |
-| 4 | HASAN Alhusen | [@hasaneng2007] | Dosya İşlemleri ve Ana Menü | Dosya okuma/yazma |
+| 3 | Abdullah Seraceddin Akkam | [@seraceddinakkam-max](https://github.com/seraceddinakkam-max) | Sıralama, Arama ve Dokümantasyon | Selection Sort, doğrusal arama |
+| 4 | HASAN Alhusen | [@hasaneng2007](https://github.com/hasaneng2007) | Dosya İşlemleri ve Ana Menü | Dosya okuma/yazma |
 
 ### 1. Öğrenci (Takım Lideri) — Sefer Yönetimi
 - [x] `Sefer` sınıfı (Sefer No, Kalkış, Varış, Tarih, Saat, Bilet Fiyatı)
@@ -40,9 +40,9 @@ Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, konsol t
 - [x] README dosyası ve test için örnek sefer/yolcu verileri
 
 ### 4. Öğrenci — Dosya İşlemleri ve Ana Menü
-- [ ] Program açılırken dosyadaki verileri okuyup bağlı liste ve dizilere yükleme
-- [ ] Çıkışta veya "Kaydet" seçildiğinde tüm verileri dosyaya yeniden yazma
-- [ ] Konsol ana menüsü (1: Seferleri Listele, 2: Bilet Al, 3: Arama Yap, 4: Kaydet ve Çık, …)
+- [x] Program açılırken dosyadaki verileri okuyup bağlı liste ve dizilere yükleme
+- [x] Çıkışta veya "Kaydet" seçildiğinde tüm verileri dosyaya yeniden yazma
+- [x] Konsol ana menüsü (1: Seferleri Listele, 2: Bilet Al, 3: Arama Yap, 4: Kaydet ve Çık, …)
 
 ## Temel İşlevler ve Kullanılan Veri Yapıları
 
