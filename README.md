@@ -9,7 +9,7 @@ Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, konsol t
 | Alan | Seçim |
 |---|---|
 | Dil | Java |
-| Arayüz | Konsol (metin tabanlı menü). Swing / JavaFX kullanılmayacaktır. |
+| Arayüz |Şimdilik Konsol (metin tabanlı menü).İlerleyen Süreçte Swing / JavaFX kullanılacaktır.|
 | Veri saklama | Projeye özel uzantılı metin dosyası |
 | IDE | NetBeans, Eclipse |
 | Sürüm kontrolü | Git & GitHub |
@@ -35,9 +35,9 @@ Bir otobüs firmasının seferlerini ve bilet satışlarını yöneten, konsol t
 - [x] Boş koltuğa bilet kesme, iptalde koltuğu boşaltma (`null`), boş/dolu koltukları gösterme (`BiletYoneticisi`)
 
 ### 3. Öğrenci — Sıralama, Arama ve Dokümantasyon
-- [ ] Seferleri bilet fiyatına veya kalkış saatine göre sıralama (Selection Sort)
-- [ ] Bilet numarasına veya yolcu adına göre arama, sefer sorgulama
-- [ ] README dosyası ve test için örnek sefer/yolcu verileri
+- [x] Seferleri bilet fiyatına veya kalkış saatine göre sıralama (Selection Sort)
+- [x] Bilet numarasına veya yolcu adına göre arama, sefer sorgulama
+- [x] README dosyası ve test için örnek sefer/yolcu verileri
 
 ### 4. Öğrenci — Dosya İşlemleri ve Ana Menü
 - [ ] Program açılırken dosyadaki verileri okuyup bağlı liste ve dizilere yükleme
