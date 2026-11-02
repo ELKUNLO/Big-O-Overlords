@@ -24,27 +24,16 @@ public class Main{
             girdi.nextLine();
 
             switch(secim){
-                case 1:
-                    System.out.println("---seferler---");
-                    break;
-
-                case 2:
-                    System.out.println("---bilet islemleri---");
-                    break;
-
-                case 3:
-                    System.out.println("---arama---");
-                    break;
-
-                case 4:
-                    System.out.println("kaydediliyor...");
+                case 1-> System.out.println("---seferler---");
+                case 2-> System.out.println("---bilet islemleri---");
+                case 3-> System.out.println("---arama---");
+                case 4->{
+                    System.out.println("kaydediliyor..");
                     dosyaIslemleri.verileriKaydet();
-                    System.out.println("kaydedildi. ");
+                    System.out.println("kaydedildi.");
                     devam = false;
-                    break;
-
-                default:
-                    System.out.println("yanlis secim, 1 ile 4 arasi gir. ");
+                }
+                default -> System.out.println("yanlis secim, 1 ile 4 arasi gir.");
             }
         }
 
